@@ -19,6 +19,14 @@ app.get('/', (req, res) => {
 
 
 //END_ASYNC
+app.post('/api/hash', (req, res) => {
+    const password = req.body.password || myPlaintextPassword;
+    bcrypt.hash(password, saltRounds, (err, hash) => {
+        if (err) return res.status(500).json({ error: 'Hashing failed' });
+        res.json({ hash });
+    });
+});
+
 
 //START_SYNC
 
