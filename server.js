@@ -19,14 +19,6 @@ app.get('/', (req, res) => {
 
 
 //END_ASYNC
-app.post('/api/hash', (req, res) => {
-    const password = req.body.password || myPlaintextPassword;
-    bcrypt.hash(password, saltRounds, (err, hash) => {
-        if (err) return res.status(500).json({ error: 'Hashing failed' });
-        res.json({ hash });
-    });
-});
-
 
 //START_SYNC
 
@@ -62,7 +54,7 @@ app.post('/api/hash', (req, res) => {
 
 
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 10000;
 app.listen(PORT, '0.0.0.0', () => {
     console.log("Listening on port:", PORT)
 });
